@@ -1,0 +1,16 @@
+import fs from 'fs';
+
+const newUser = {
+    "name": "Yuri",
+    "age": 19,
+    "email": "yuri@test.com"
+};
+
+let data = fs.readFileSync(process.cwd() + '/src/data/test.json');
+let json = JSON.parse(data);
+json.push(newUser);
+fs.writeFile(process.cwd() + '/src/data/test.json', JSON.stringify(json), (err) => {
+    if (err) {
+        throw err;
+    };
+});
